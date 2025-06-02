@@ -14,6 +14,3 @@ equipos.reverse()
 
 for i in equipos:
     print(i)
-
-
-
