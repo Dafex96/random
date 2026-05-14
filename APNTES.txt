@@ -1,0 +1,31 @@
+carpeta: config
+       DataLoader.java
+              @Configuration
+
+              @Bean
+              CommandLineRuner initData(DoctorRepository docRepo, Especialidad espRepo){
+
+                     return args -> {
+
+                            if(docRepo.count() > 0){
+                                   sout("No se insertaron datos poque la bd no esta vacia")
+                            }else{
+
+                                   Especialidad espe1 = new Especialidad(null, "Pediatria");
+                                   Especialidad espe2 = new Especialidad(null, "Cardiologia");
+                                   Especialidad espe3 = new Especialidad(null, "Medcina general");
+
+                                   Doctor doc1 = new Doctor(null, "Juan Perez", "1234556-8", espe1);
+                                   Doctor doc2 = new Doctor(null, "Ana Muñoz", "2372547-5", espe3);
+
+                                   espRepo.save(espe1);
+                                   espRepo.save(espe2);
+                                   espRepo.save(espe3);
+
+                                   docRepo.save(doc1);
+                                   docRepo.save(doc2);
+
+                                   sout("Datos cargados con exito...");
+                            };
+                     };
+              };
